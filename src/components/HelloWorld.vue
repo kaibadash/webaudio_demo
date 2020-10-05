@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "HelloWorld",
   props: {
@@ -19,13 +20,9 @@ export default {
       this.$store.commit("now", new Date().toString());
     }
   },
-  computed: {
-    count() {
-      return this.$store.state.count;
-    },
-    now() {
-      return this.$store.state.now;
-    }
-  }
+  computed: mapState({
+    count: state => state.count,
+    now: state => state.now
+  })
 };
 </script>
