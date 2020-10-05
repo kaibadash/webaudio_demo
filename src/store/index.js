@@ -4,8 +4,18 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    count: 0,
+    now: ""
+  },
+  mutations: {
+    increment(state) {
+      state.count++;
+    },
+    now(state, date) {
+      state.now = date;
+    }
+  },
   actions: {},
   modules: {}
 });
