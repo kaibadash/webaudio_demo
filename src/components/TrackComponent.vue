@@ -1,8 +1,20 @@
 <template>
   <div class="instrument">
     <img :src="this.track.icon()" />
-    <input type="range" min="0" max="1" step="0.1" v-model="volume" />{{
+    Volume: <input type="range" min="0" max="1" step="0.1" v-model="volume" />{{
       volume
+    }}
+    Overdrive:
+    <input type="range" min="0" max="1" step="0.1" v-model="overdrive" />{{
+      overdrive
+    }}
+    Delay:
+    <input type="range" min="0" max="1000" step="100" v-model="delay" />{{
+      delay
+    }}
+    Pan:
+    <input type="range" min="-1" max="1" step="0.1" v-model="pan" />{{
+      pan
     }}
   </div>
 </template>
@@ -19,6 +31,7 @@ export default {
   computed: {
     volume: {
       get() {
+        // FIXME: never called when updated!
         console.log("get computed volume", this.track);
         if (this.track == null) {
           return 1;
@@ -28,6 +41,24 @@ export default {
       set(value) {
         console.log("set vol", value);
         this.$store.commit("updateVolume", [this.track.id, value]);
+      }
+    },
+    overdrive: {
+      get() { return 0; },
+      set(value) {
+        this.$store.commit("updateOverdrive", [this.track.id, value]);
+      }
+    },
+    delay: {
+      get() { return 1; },
+      set(value) {
+        this.$store.commit("updateDelay", [this.track.id, value]);
+      }
+    },
+    pan: {
+      get() { return 0; },
+      set(value) {
+        this.$store.commit("updatePan", [this.track.id, value]);
       }
     }
   }

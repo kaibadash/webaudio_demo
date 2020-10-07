@@ -38,8 +38,35 @@ export default new Vuex.Store({
         track.setVolume(volume);
         // Vue.set(state.tracks, i, track);
         // state.tracks.splice(i, 1, track);
-        Object.assign(state.tracks[i], track);
+        // Object.assign(state.tracks[i], track);
         console.log("updateVolume splic", track.volume());
+      }
+    },
+    updateOverdrive(state, params) {
+      const trackId = params[0];
+      const val = params[1];
+      for (let i = 0; i < state.tracks.length; i++) {
+        const track = state.tracks[i];
+        if (track.id != trackId) continue;
+        track.setOverdrive(val);
+      }
+    },
+    updatePan(state, params) {
+      const trackId = params[0];
+      const val = params[1];
+      for (let i = 0; i < state.tracks.length; i++) {
+        const track = state.tracks[i];
+        if (track.id != trackId) continue;
+        track.setPan(val);
+      }
+    },
+    updateDelay(state, params) {
+      const trackId = params[0];
+      const val = params[1];
+      for (let i = 0; i < state.tracks.length; i++) {
+        const track = state.tracks[i];
+        if (track.id != trackId) continue;
+        track.setDelay(val);
       }
     },
     increment(state) {

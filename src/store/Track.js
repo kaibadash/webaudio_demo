@@ -9,6 +9,9 @@ export class Track {
   audioContext = null;
   source = null;
   gain = null;
+  overdrive = null;
+  panner = null;
+  delay = null;
 
   constructor(audioPath, audioContext, source) {
     console.log("construct", audioPath, audioContext, source);
@@ -19,15 +22,16 @@ export class Track {
 
     this.tuna = new Tuna(this.audioContext);
     this.gain = new this.tuna.Gain({ gain: 1, bypass: false });
-    this.effects.push(new this.tuna.Panner({ pan: 0, bypass: true }));
-    this.effects.push(
-      new this.tuna.Overdrive({
-        algorithmIndex: 2,
-        outputGain: -12,
-        bypass: true
-      })
-    );
-    this.effects.push(new this.tuna.Delay({ delayTime: 1000, bypass: true }));
+    this.panner = new this.tuna.Panner({ pan: 0, bypass: true });
+    this.overdrive = new this.tuna.Overdrive({
+      algorithmIndex: 2,
+      outputGain: -12,
+      bypass: true
+    });
+    this.delay = new this.tuna.Delay({ delayTime: 1000, bypass: true });
+    this.effects.push(this.panner);
+    this.effects.push(this.overdrive);
+    this.effects.push(this.delay);
     this.effects.push(this.gain);
 
     let beforeNode = this.source;
@@ -36,7 +40,6 @@ export class Track {
       beforeNode = effect;
     });
     this.gain.connect(this.audioContext.destination);
-
   }
 
   static async init(audioPath) {
@@ -72,6 +75,19 @@ export class Track {
     console.log("setVol before", this.gain["gain"].value);
     this.gain["gain"].value = vol;
     console.log("setVol after", this.gain["gain"].value);
+  }
+
+  setOverdrive(vol) {
+    console.log("overdrive", vol);
+    this.overdrive["drive"].value = vol;
+  }
+  setDelay(vol) {
+    console.log("delay", vol);
+    this.delay["delayTime"].value = vol;
+  }
+  setPan(vol) {
+    console.log("", vol);
+    this.panner["pan"].value = vol;
   }
 
   icon() {
