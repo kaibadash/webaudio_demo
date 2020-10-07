@@ -2,8 +2,8 @@
   <div>
     <button v-on:click="play()">play</button>
     <button v-on:click="stop()">stop</button>
-    <div v-for="track in this.$store.state.tracks" :key="track">
-      <TrackComponent :track="track" />
+    <div v-for="track in this.$store.state.tracks" :key="track.audioPath">
+      <TrackComponent :track="track" :key="track.audioPath" />
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
       console.log("play");
       this.$store.commit("play", ["piano.m4a", "drum.m4a", "bass.m4a"]);
     },
-    stop: () => {
+    stop: function() {
       console.log("stop");
       this.$store.commit("stop");
     }
