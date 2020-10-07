@@ -1,5 +1,7 @@
 <template>
-  <div>TrackComponent: {{ track.toString() }}</div>
+  <div class="instrument">
+    <img :src="this.track.icon()" />
+  </div>
 </template>
 
 <script>
@@ -16,5 +18,9 @@ export default {
 <style scoped>
 div {
   background-color: azure;
+}
+.instrument img {
+  width: 100px;
+  height: 100px;
 }
 </style>

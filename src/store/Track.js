@@ -52,6 +52,10 @@ export class Track {
 
   volume() {}
 
+  icon() {
+    return this.audioPath.split(".")[0] + ".png";
+  }
+
   toString() {
     return this.audioPath;
   }

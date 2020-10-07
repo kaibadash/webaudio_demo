@@ -10,7 +10,6 @@
 
 <script>
 import TrackComponent from "./TrackComponent.vue";
-import { Track } from "../store/Track";
 
 export default {
   name: "DtmComponent",
