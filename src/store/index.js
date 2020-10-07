@@ -9,6 +9,7 @@ export default new Vuex.Store({
     tracks: [],
     count: 0,
     now: "",
+    message: "init"
   },
   mutations: {
     async play(state, audios) {
@@ -27,12 +28,29 @@ export default new Vuex.Store({
         track.stop();
       });
     },
+    updateVolume(state, params) {
+      const trackId = params[0];
+      const volume = params[1];
+      console.log("updateVolume", trackId, volume, state.tracks);
+      for (let i = 0; i < state.tracks.length; i++) {
+        const track = state.tracks[i];
+        if (track.id != trackId) continue;
+        track.setVolume(volume);
+        // Vue.set(state.tracks, i, track);
+        // state.tracks.splice(i, 1, track);
+        Object.assign(state.tracks[i], track);
+        console.log("updateVolume splic", track.volume());
+      }
+    },
     increment(state) {
       state.count++;
     },
     now(state, date) {
       state.now = date;
     },
+    updateMessage(state, val) {
+      state.message = val;
+    }
   },
   actions: {},
   modules: {},
