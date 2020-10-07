@@ -8,6 +8,7 @@ export class Track {
   source = null;
 
   constructor(audioPath, audioContext, source) {
+    console.log("construct", audioPath, audioContext, source);
     this.audioPath = audioPath;
     this.audioContext = audioContext;
     this.source = source;
@@ -24,6 +25,7 @@ export class Track {
   }
 
   static async init(audioPath) {
+    console.log("init Track", audioPath);
     const audioContext = new AudioContext();
     const response = await fetch(audioPath);
     const data = await response.arrayBuffer();
@@ -34,6 +36,7 @@ export class Track {
   }
 
   play() {
+    console.log("start Track.js");
     this.source.start();
   }
 

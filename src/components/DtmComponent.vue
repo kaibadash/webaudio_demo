@@ -21,17 +21,15 @@ export default {
   data: () => {
     return {};
   },
-  mounted: async function() {
-    ["piano.m4a", "drum.m4a", "bass.m4a"].forEach(async audioName => {
-      this.$store.state.tracks.push(await Track.init(audioName));
-    });
-  },
+  mounted: async () => {},
   methods: {
     play: function() {
       console.log("play");
+      this.$store.commit("play", ["piano.m4a", "drum.m4a", "bass.m4a"]);
     },
     stop: () => {
       console.log("stop");
+      this.$store.commit("stop");
     }
   }
 };
