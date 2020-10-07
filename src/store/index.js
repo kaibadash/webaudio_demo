@@ -69,6 +69,21 @@ export default new Vuex.Store({
         track.setDelay(val);
       }
     },
+    toggleOverdrive(state, trackId) {
+      for (let i = 0; i < state.tracks.length; i++) {
+        const track = state.tracks[i];
+        if (track.id != trackId) continue;
+        console.log("handle toggleOverdrive", trackId, track);
+        track.toggleOverdrive();
+      }
+    },
+    toggleDelay(state, trackId) {
+      for (let i = 0; i < state.tracks.length; i++) {
+        const track = state.tracks[i];
+        if (track.id != trackId) continue;
+        track.toggleDelay();
+      }
+    },
     increment(state) {
       state.count++;
     },

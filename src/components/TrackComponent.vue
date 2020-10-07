@@ -5,10 +5,12 @@
       volume
     }}
     Overdrive:
+    <input type="checkbox" v-model="toggleOverdrive" />
     <input type="range" min="0" max="1" step="0.1" v-model="overdrive" />{{
       overdrive
     }}
     Delay:
+    <input type="checkbox" v-model="toggleDelay" />
     <input type="range" min="0" max="1000" step="100" v-model="delay" />{{
       delay
     }}
@@ -59,6 +61,19 @@ export default {
       get() { return 0; },
       set(value) {
         this.$store.commit("updatePan", [this.track.id, value]);
+      }
+    },
+    toggleOverdrive: {
+      get() { return false; },
+      set(value) {
+        console.log("toggleOverdrive");
+        this.$store.commit("toggleOverdrive", this.track.id);
+      }
+    },
+    toggleDelay: {
+      get() { return false; },
+      set(value) {
+        this.$store.commit("toggleDelay", this.track.id);
       }
     }
   }

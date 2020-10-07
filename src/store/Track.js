@@ -22,7 +22,7 @@ export class Track {
 
     this.tuna = new Tuna(this.audioContext);
     this.gain = new this.tuna.Gain({ gain: 1, bypass: false });
-    this.panner = new this.tuna.Panner({ pan: 0, bypass: true });
+    this.panner = new this.tuna.Panner({ pan: 0, bypass: false });
     this.overdrive = new this.tuna.Overdrive({
       algorithmIndex: 2,
       outputGain: -12,
@@ -83,13 +83,20 @@ export class Track {
   }
   setDelay(vol) {
     console.log("delay", vol);
-    this.delay["delayTime"].value = vol;
+    this.delay["delayTime"] = vol;
   }
   setPan(vol) {
     console.log("", vol);
     this.panner["pan"].value = vol;
   }
-
+  toggleOverdrive() {
+    this.overdrive["bypass"] = !this.overdrive["bypass"];
+    console.log(this.overdrive["bypass"].value);
+  }
+  toggleDelay() {
+    this.delay["bypass"] = !this.delay["bypass"];
+    console.log(this.delay["bypass"].value);
+  }
   icon() {
     return this.audioPath.split(".")[0] + ".png";
   }
