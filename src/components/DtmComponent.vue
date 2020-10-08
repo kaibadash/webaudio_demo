@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>message:<input v-model="message" />{{ message }}</div>
     <button v-on:click="play()">play</button>
     <button v-on:click="stop()">stop</button>
     <div v-for="track in this.$store.state.tracks" :key="track.id">

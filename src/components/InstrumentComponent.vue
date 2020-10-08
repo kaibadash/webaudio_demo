@@ -8,7 +8,7 @@
 export default {
   name: "InstrumentComponent",
   props: {}
-}
+};
 </script>
 
 <style scoped>
