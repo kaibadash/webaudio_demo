@@ -1,6 +1,5 @@
 <template>
   <div>
-    <button v-on:click="nowClick">{{ now }}なう</button>
     <button v-on:click="hee">{{ count }}へぇ</button>
   </div>
 </template>
