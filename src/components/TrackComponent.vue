@@ -19,7 +19,7 @@
     </div>
     <div class="instrument">
       <dl>
-        <dt>Overdrive</dt>
+        <dt><img src="overdrive_off.jpg" /></dt>
         <dd>
           <input type="checkbox" v-model="toggleOverdrive" />
           <input type="range" min="0" max="1" step="0.1" v-model="overdrive" />
@@ -28,7 +28,7 @@
     </div>
     <div class="instrument">
       <dl>
-        <dt>Delay</dt>
+        <dt><img src="delay_off.jpg" /></dt>
         <dd>
           <input type="checkbox" v-model="toggleDelay" />
           <input type="range" min="0" max="1000" step="100" v-model="delay" />
