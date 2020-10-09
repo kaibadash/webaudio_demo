@@ -5,7 +5,7 @@
       <dl>
         <dt>Volume</dt>
         <dd>
-          <input type="range" min="0" max="1" step="0.1" v-model="volume" />{{
+          <input type="range" min="0" max="1" step="0.00001" v-model="volume" />{{
             volume
           }}
         </dd>

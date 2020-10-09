@@ -24,7 +24,7 @@ export default {
   methods: {
     play: function() {
       console.log("play");
-      this.$store.commit("play", ["piano.m4a", "drum.m4a", "bass.m4a"]);
+      this.$store.commit("play", ["drum.m4a", "bass.m4a", "guitar.m4a", "vocal.m4a"]);
     },
     stop: function() {
       console.log("stop");

@@ -21,7 +21,7 @@ export class Track {
     this.source = source;
 
     this.tuna = new Tuna(this.audioContext);
-    this.gain = new this.tuna.Gain({ gain: 1, bypass: false });
+    this.gain = new this.tuna.Gain({ gain: 0.015, bypass: false });
     this.panner = new this.tuna.Panner({ pan: 0, bypass: false });
     this.overdrive = new this.tuna.Overdrive({
       algorithmIndex: 2,
