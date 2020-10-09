@@ -1,5 +1,7 @@
 # webaudio_demo
 
+時間制限があったので書きなぐりです。ご容赦ください…
+
 ## Project setup
 ```
 npm install
